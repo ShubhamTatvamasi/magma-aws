@@ -61,7 +61,9 @@ module "orc8r-app" {
   # provides the URL format for Docker Hub, where the user and pass are your
   # Docker Hub username and access token, respectively
   docker_registry = "registry.hub.docker.com/magmacore"
-  docker_user     = "myusername"
+
+  # We need these:
+  docker_user     = "shubhamtatvamasi"
   docker_pass     = "mypassword"
 
   # Note that this can be any Helm chart repo provider -- the example below
