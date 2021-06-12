@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
-
-domain=$1
+if [ -z "$1" ]
+then
+  domain=magmalocal.com
+else
+  domain=$1
+fi
 
 echo ""
 echo "################"
@@ -27,9 +31,6 @@ DNS.1 = *.$domain
 DNS.2 = *.nms.$domain
 EOF
 openssl x509 -req -in controller.csr -CA rootCA.pem -CAkey rootCA.key -CAcreateserial -out controller.crt -days 825 -sha256 -extfile ${domain}.ext
-
-cp controller.crt nms_nginx.pem
-cp controller.key nms_nginx.key.pem
 
 echo ""
 echo "###########################"

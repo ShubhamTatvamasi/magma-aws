@@ -13,18 +13,18 @@
 
 module "orc8r" {
   # Change this to pull from github with a specified ref
-  source = "github.com/magma/magma//orc8r/cloud/deploy/terraform/orc8r-aws"
-  # source = "github.com/magma/magma//orc8r/cloud/deploy/terraform/orc8r-aws?ref=v1.5"
+  source = "github.com/magma/magma//orc8r/cloud/deploy/terraform/orc8r-aws?ref=v1.5.1"
 
   region = "us-west-2"
 
-  orc8r_db_password           = "mypassword" # must be at least 8 characters
+  orc8r_db_password           = "password" # must be at least 8 characters
   secretsmanager_orc8r_secret = "orc8r-secrets"
-  orc8r_domain_name           = "orc8r.rxdp.in"
+  orc8r_domain_name           = "magmalocal.com"
+  orc8r_db_engine_version     = "9.6.21"
 
   vpc_name        = "orc8r"
   cluster_name    = "orc8r"
-  cluster_version = "1.17"
+  cluster_version = "1.20"
 
   deploy_elasticsearch          = true
   elasticsearch_domain_name     = "orc8r-es"
@@ -39,8 +39,7 @@ module "orc8r" {
 
 module "orc8r-app" {
   # Change this to pull from github with a specified ref
-  source = "github.com/magma/magma//orc8r/cloud/deploy/terraform/orc8r-helm-aws"
-  # source = "github.com/magma/magma//orc8r/cloud/deploy/terraform/orc8r-helm-aws?ref=v1.5"
+  source = "github.com/magma/magma//orc8r/cloud/deploy/terraform/orc8r-helm-aws?ref=v1.5.1"
 
   region = "us-west-2"
 
@@ -61,14 +60,14 @@ module "orc8r-app" {
   # Note that this can be any container registry provider -- the example below
   # provides the URL format for Docker Hub, where the user and pass are your
   # Docker Hub username and access token, respectively
-  docker_registry = "docker.artifactory.magmacore.org"
+  docker_registry = "registry.hub.docker.com/magmacore"
   docker_user     = "myusername"
   docker_pass     = "mypassword"
 
   # Note that this can be any Helm chart repo provider -- the example below
   # provides the URL format for using a raw GitHub repo, where the user and
   # pass are your GitHub username and access token, respectively
-  helm_repo = "https://artifactory.magmacore.org/artifactory/helm"
+  helm_repo = "https://shubhamtatvamasi.github.io/magma-charts-150"
   helm_user = "myusername"
   helm_pass = "mypassword"
 
@@ -80,7 +79,7 @@ module "orc8r-app" {
   elasticsearch_endpoint = module.orc8r.es_endpoint
 
   orc8r_deployment_type = "all"
-  orc8r_tag             = "1.5.0"
+  orc8r_tag             = "1.5.1"
 }
 
 output "nameservers" {

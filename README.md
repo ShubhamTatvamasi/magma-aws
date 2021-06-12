@@ -1,20 +1,32 @@
 # magma-aws
 
-clone magma 1.5
-```bash
-git clone -b v1.5 https://github.com/magma/magma.git
-```
+Use Terraform v0.14.11
 
 generate secrets:
 ```bash
 mkdir -p certs && cd certs && \
-  ../01-generate-secrets.sh orc8r.rxdp.in \
+  ../01-generate-secrets.sh magmalocal.com \
   && cd -
 ```
 ---
 
-install terraform:
+Setup Magma Infrastructure:
 ```bash
 terraform init
-terraform plan
+terraform apply -target=module.orc8r
+```
+
+set kubernetes config file:
+```bash
+export KUBECONFIG=$PWD/kubeconfig_orc8r
+```
+
+Setup Magma Secrets:
+```bash
+terraform apply -target=module.orc8r-app.null_resource.orc8r_seed_secrets
+```
+
+Install Magma:
+```bash
+terraform apply
 ```
