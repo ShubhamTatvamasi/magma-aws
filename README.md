@@ -1,6 +1,6 @@
 # magma-aws
 
-### prerequisite
+### Prerequisite
 
 Use Terraform v0.14.11
 ```bash
