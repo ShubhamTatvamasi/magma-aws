@@ -5,7 +5,7 @@ backup kubeconfig:
 cp kubeconfig_orc8r kubeconfig_orc8r.bak
 ```
 
-restore 1.3.3 terraform state: 
+Recover 1.3.3 terraform `main.tf` file:
 ```bash
 cp main.tf.bak main.tf
 ```
