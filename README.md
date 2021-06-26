@@ -2,6 +2,8 @@
 
 ### Prerequisite
 
+#### $400.00 monthly cost
+
 Use Terraform v0.14.11
 ```bash
 wget https://releases.hashicorp.com/terraform/0.14.11/terraform_0.14.11_linux_amd64.zip
