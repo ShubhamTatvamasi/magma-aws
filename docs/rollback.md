@@ -10,4 +10,10 @@ Recover 1.3.3 terraform `main.tf` file:
 cp main.tf.bak main.tf
 ```
 
+Update your dependencies:
+```bash
+terraform init --upgrade
+terraform refresh
+```
+
 
