@@ -40,3 +40,12 @@ Install Magma:
 ```bash
 terraform apply
 ```
+---
+
+delete everything:
+```bash
+export KUBECONFIG=$PWD/kubeconfig_orc8r
+terraform destroy
+```
+
+
