@@ -16,4 +16,8 @@ terraform init --upgrade
 terraform refresh
 ```
 
+apply changes:
+```bash
+terraform apply -target=module.orc8r
+```
 
