@@ -11,8 +11,9 @@ sudo mv terraform /usr/bin/terraform
 
 generate secrets:
 ```bash
+AWS_DOMAIN=magmalocal.com
 mkdir -p certs && cd certs && \
-  ../01-generate-secrets.sh magmalocal.com \
+  ../01-generate-secrets.sh $AWS_DOMAIN \
   && cd -
 ```
 ---
