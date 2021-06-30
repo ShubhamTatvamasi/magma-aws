@@ -2,7 +2,7 @@
 
 ### Prerequisite
 
-#### $ 800.00 monthly cost
+#### $ 900.00 monthly cost
 
 Use Terraform v0.14.11
 ```bash
