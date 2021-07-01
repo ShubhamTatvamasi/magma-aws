@@ -24,7 +24,7 @@ mkdir -p certs && cd certs && \
 
 Setup Magma Infrastructure:
 ```bash
-terraform init
+terraform init --upgrade
 terraform apply -target=module.orc8r
 ```
 
