@@ -49,7 +49,7 @@ terraform apply
 ```
 ---
 
-### Delete
+### Uninstall
 
 delete everything:
 ```bash
