@@ -60,18 +60,16 @@ module "orc8r-app" {
   # Note that this can be any container registry provider -- the example below
   # provides the URL format for Docker Hub, where the user and pass are your
   # Docker Hub username and access token, respectively
-  docker_registry = "registry.hub.docker.com/magmacore"
-
-  # We need these:
-  docker_user     = "shubhamtatvamasi"
-  docker_pass     = "mypassword"
+  docker_registry = "magmacore"
+  docker_user     = "username"
+  docker_pass     = "password"
 
   # Note that this can be any Helm chart repo provider -- the example below
   # provides the URL format for using a raw GitHub repo, where the user and
   # pass are your GitHub username and access token, respectively
   helm_repo = "https://shubhamtatvamasi.github.io/magma-charts-150"
-  helm_user = "myusername"
-  helm_pass = "mypassword"
+  helm_user = "username"
+  helm_pass = "password"
 
   eks_cluster_id = module.orc8r.eks_cluster_id
 
@@ -81,7 +79,7 @@ module "orc8r-app" {
   elasticsearch_endpoint = module.orc8r.es_endpoint
 
   orc8r_deployment_type = "all"
-  orc8r_tag             = "1.5.1"
+  orc8r_tag             = "1.5.2"
 }
 
 output "nameservers" {
