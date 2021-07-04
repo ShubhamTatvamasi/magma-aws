@@ -13,14 +13,14 @@
 
 module "orc8r" {
   # Change this to pull from github with a specified ref
-  source = "github.com/magma/magma//orc8r/cloud/deploy/terraform/orc8r-aws?ref=v1.5.2"
+  source = "github.com/magma/magma//orc8r/cloud/deploy/terraform/orc8r-aws?ref=v1.5"
 
   region = "us-west-2"
 
   orc8r_db_password           = "password" # must be at least 8 characters
   secretsmanager_orc8r_secret = "orc8r-secrets"
   orc8r_domain_name           = "magmalocal.com"
-  orc8r_db_engine_version     = "9.6.21"
+  # orc8r_db_engine_version     = "9.6.21"
 
   vpc_name        = "orc8r"
   cluster_name    = "orc8r"
@@ -39,7 +39,7 @@ module "orc8r" {
 
 module "orc8r-app" {
   # Change this to pull from github with a specified ref
-  source = "github.com/magma/magma//orc8r/cloud/deploy/terraform/orc8r-helm-aws?ref=v1.5.2"
+  source = "github.com/magma/magma//orc8r/cloud/deploy/terraform/orc8r-helm-aws?ref=v1.5"
 
   region = "us-west-2"
 
