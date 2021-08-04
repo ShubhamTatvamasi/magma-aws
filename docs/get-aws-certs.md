@@ -1,5 +1,25 @@
 # get-aws-certs
 
+### yaml backup and restore
+
+backup secrets:
+```bash
+kubectl get secrets nms-certs -o yaml > nms-certs.yaml
+kubectl get secrets fluentd-certs -o yaml > fluentd-certs.yaml
+kubectl get secrets orc8r-certs -o yaml > orc8r-certs.yaml
+```
+
+restore secrets:
+```bash
+kubectl apply -f nms-certs.yaml
+kubectl apply -f fluentd-certs.yaml
+kubectl apply -f orc8r-certs.yaml
+```
+---
+
+# cert files 
+
+backup secret to files:
 ```bash
 kubectl get secrets nms-certs \
   -o jsonpath='{.data.admin_operator\.key\.pem}' | base64 -d > admin_operator.key.pem
@@ -31,24 +51,6 @@ kubectl get secrets orc8r-certs \
 kubectl get secrets orc8r-certs \
   -o jsonpath='{.data.rootCA\.pem}' | base64 -d > rootCA.pem
 ```
----
-
-backup secrets:
-```bash
-kubectl get secrets nms-certs -o yaml > nms-certs.yaml
-kubectl get secrets fluentd-certs -o yaml > fluentd-certs.yaml
-kubectl get secrets orc8r-certs -o yaml > orc8r-certs.yaml
-```
-
-restore secrets:
-```bash
-kubectl apply -f nms-certs.yaml
-kubectl apply -f fluentd-certs.yaml
-kubectl apply -f orc8r-certs.yaml
-```
----
-
-### Create certs
 
 create Orc8r secrets from files: 
 ```bash
