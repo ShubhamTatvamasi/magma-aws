@@ -40,4 +40,36 @@ kubectl get secrets fluentd-certs -o yaml > fluentd-certs.yaml
 kubectl get secrets orc8r-certs -o yaml > orc8r-certs.yaml
 ```
 
+restore secrets:
+```bash
+kubectl apply -f nms-certs.yaml
+kubectl apply -f fluentd-certs.yaml
+kubectl apply -f orc8r-certs.yaml
+```
+---
+
+### Create certs
+
+create Orc8r secrets from files: 
+```bash
+kubectl create secret generic fluentd-certs \
+  --from-file=certifier.pem \
+  --from-file=fluentd.pem \
+  --from-file=fluentd.key
+
+kubectl create secret generic nms-certs \
+  --from-file=admin_operator.key.pem \
+  --from-file=admin_operator.pem \
+  --from-file=controller.crt \
+  --from-file=controller.key
+
+kubectl create secret generic orc8r-certs \
+  --from-file=admin_operator.pem \
+  --from-file=bootstrapper.key \
+  --from-file=certifier.key \
+  --from-file=certifier.pem \
+  --from-file=controller.crt \
+  --from-file=controller.key \
+  --from-file=rootCA.pem
+```
 
