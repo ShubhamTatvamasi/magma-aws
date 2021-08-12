@@ -6,10 +6,11 @@
 
 Use Terraform v0.14.11
 ```bash
-wget https://releases.hashicorp.com/terraform/0.14.11/terraform_0.14.11_linux_amd64.zip
-unzip terraform_0.14.11_linux_amd64.zip
+export TERRAFORM_VERSION=0.14.11
+wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 sudo mv terraform /usr/bin/terraform
-rm terraform_0.14.11_linux_amd64.zip
+rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 ```
 
 generate secrets:
