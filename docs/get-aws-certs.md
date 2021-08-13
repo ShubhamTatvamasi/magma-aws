@@ -52,6 +52,12 @@ kubectl get secrets orc8r-certs \
   -o jsonpath='{.data.rootCA\.pem}' | base64 -d > rootCA.pem
 ```
 
+
+delete old certificates:
+```bash
+kubectl delete secret fluentd-certs nms-certs orc8r-certs
+```
+
 create Orc8r secrets from files: 
 ```bash
 kubectl create secret generic fluentd-certs \
