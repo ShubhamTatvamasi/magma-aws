@@ -24,7 +24,7 @@ module "orc8r" {
 
   vpc_name        = "orc8r"
   cluster_name    = "orc8r"
-  cluster_version = "1.20"
+  cluster_version = "1.21"
 
   deploy_elasticsearch          = true
   elasticsearch_domain_name     = "orc8r-es"
@@ -61,15 +61,16 @@ module "orc8r-app" {
   # provides the URL format for Docker Hub, where the user and pass are your
   # Docker Hub username and access token, respectively
   docker_registry = "magmacore"
-  docker_user     = "username"
-  docker_pass     = "password"
+  docker_user     = ""
+  docker_pass     = ""
 
   # Note that this can be any Helm chart repo provider -- the example below
   # provides the URL format for using a raw GitHub repo, where the user and
   # pass are your GitHub username and access token, respectively
-  helm_repo = "https://shubhamtatvamasi.github.io/magma-charts-150"
-  helm_user = "username"
-  helm_pass = "password"
+  # helm_repo = "https://shubhamtatvamasi.github.io/magma-charts-150"
+  helm_repo = "https://docker.artifactory.magmacore.org/artifactory/helm"
+  helm_user = ""
+  helm_pass = ""
 
   eks_cluster_id = module.orc8r.eks_cluster_id
 
@@ -79,7 +80,7 @@ module "orc8r-app" {
   elasticsearch_endpoint = module.orc8r.es_endpoint
 
   orc8r_deployment_type = "all"
-  orc8r_tag             = "1.5.2"
+  orc8r_tag             = "1.6.0"
 }
 
 output "nameservers" {

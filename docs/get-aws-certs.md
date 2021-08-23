@@ -50,6 +50,9 @@ kubectl get secrets orc8r-certs \
 
 kubectl get secrets orc8r-certs \
   -o jsonpath='{.data.rootCA\.pem}' | base64 -d > rootCA.pem
+
+kubectl get secrets orc8r-certs \
+  -o jsonpath='{.data.rootCA\.key}' | base64 -d > rootCA.key
 ```
 
 
@@ -78,6 +81,6 @@ kubectl create secret generic orc8r-certs \
   --from-file=certifier.pem \
   --from-file=controller.crt \
   --from-file=controller.key \
-  --from-file=rootCA.pem
+  --from-file=rootCA.pem \
+  --from-file=rootCA.key
 ```
-
