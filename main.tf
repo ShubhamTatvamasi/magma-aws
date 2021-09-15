@@ -21,7 +21,7 @@ module "orc8r" {
 
   secretsmanager_orc8r_secret = "orc8r-secrets"
   orc8r_domain_name           = "orc8r.example.com"
-  # orc8r_db_engine_version   = "9.6.21"
+  # orc8r_db_engine_version     = "9.6.21"
 
   orc8r_sns_email             = "admin@example.com"
   enable_aws_db_notifications = true  
