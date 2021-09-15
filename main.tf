@@ -13,15 +13,20 @@
 
 module "orc8r" {
   # Change this to pull from github with a specified ref
-  source = "github.com/magma/magma//orc8r/cloud/deploy/terraform/orc8r-aws?ref=v1.5"
+  source = "github.com/magma/magma//orc8r/cloud/deploy/terraform/orc8r-aws?ref=v1.6"
 
   region = "us-west-2"
 
   orc8r_db_password           = "password" # must be at least 8 characters
+
   secretsmanager_orc8r_secret = "orc8r-secrets"
-  orc8r_domain_name           = "magmalocal.com"
+  orc8r_domain_name           = "orc8r.example.com"
+
   # orc8r_db_engine_version     = "9.6.21"
 
+  orc8r_sns_email             = "admin@example.com"
+  enable_aws_db_notifications = true  
+  
   vpc_name        = "orc8r"
   cluster_name    = "orc8r"
   cluster_version = "1.21"
@@ -39,7 +44,7 @@ module "orc8r" {
 
 module "orc8r-app" {
   # Change this to pull from github with a specified ref
-  source = "github.com/magma/magma//orc8r/cloud/deploy/terraform/orc8r-helm-aws?ref=v1.5"
+  source = "github.com/magma/magma//orc8r/cloud/deploy/terraform/orc8r-helm-aws?ref=v1.6"
 
   region = "us-west-2"
 
@@ -57,16 +62,12 @@ module "orc8r-app" {
   orc8r_db_user    = module.orc8r.orc8r_db_user
   orc8r_db_pass    = module.orc8r.orc8r_db_pass
 
-  # Note that this can be any container registry provider -- the example below
-  # provides the URL format for Docker Hub, where the user and pass are your
-  # Docker Hub username and access token, respectively
+  # Note that this can be any container registry provider
   docker_registry = "magmacore"
   docker_user     = ""
   docker_pass     = ""
 
-  # Note that this can be any Helm chart repo provider -- the example below
-  # provides the URL format for using a raw GitHub repo, where the user and
-  # pass are your GitHub username and access token, respectively
+  # Note that this can be any Helm chart repo provider    
   # helm_repo = "https://shubhamtatvamasi.github.io/magma-charts-150"
   helm_repo = "https://docker.artifactory.magmacore.org/artifactory/helm"
   helm_user = ""
@@ -77,7 +78,8 @@ module "orc8r-app" {
   efs_file_system_id       = module.orc8r.efs_file_system_id
   efs_provisioner_role_arn = module.orc8r.efs_provisioner_role_arn
 
-  elasticsearch_endpoint = module.orc8r.es_endpoint
+  elasticsearch_endpoint       = module.orc8r.es_endpoint
+  elasticsearch_disk_threshold = tonumber(module.orc8r.es_volume_size * 75 / 100)
 
   orc8r_deployment_type = "all"
   orc8r_tag             = "1.6.0"
