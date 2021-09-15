@@ -4,15 +4,6 @@
 
 #### $ 900.00 monthly cost
 
-Use Terraform v0.14.11
-```bash
-export TERRAFORM_VERSION=0.14.11
-wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
-unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip
-sudo mv terraform /usr/bin/terraform
-rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip
-```
-
 generate secrets:
 ```bash
 AWS_DOMAIN=magmalocal.com
@@ -61,5 +52,20 @@ delete everything:
 export KUBECONFIG=$PWD/kubeconfig_orc8r
 terraform destroy
 ```
+---
+
+### OLD
+
+#### Use for 1.5.0 Orc8r
+
+Use Terraform v0.14.11
+```bash
+export TERRAFORM_VERSION=0.14.11
+wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+sudo mv terraform /usr/bin/terraform
+rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+```
+
 
 
