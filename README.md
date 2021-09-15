@@ -6,7 +6,7 @@
 
 generate secrets:
 ```bash
-AWS_DOMAIN=magmalocal.com
+export AWS_DOMAIN=magmalocal.com
 mkdir -p certs && cd certs && \
   ../01-generate-secrets.sh $AWS_DOMAIN \
   && cd -
