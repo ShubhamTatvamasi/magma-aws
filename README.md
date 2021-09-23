@@ -4,6 +4,8 @@
 
 #### $ 900.00 monthly cost
 
+https://aws.amazon.com/marketplace/search/results?searchTerms=magma
+
 generate secrets:
 ```bash
 export AWS_DOMAIN=magmalocal.com
