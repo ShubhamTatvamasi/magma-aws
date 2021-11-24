@@ -4,7 +4,7 @@
 
 #### $ 900.00 monthly cost
 
-https://aws.amazon.com/marketplace/search/results?searchTerms=magma
+https://aws.amazon.com/marketplace/seller-profile?id=a28de92c-8c49-49cd-8c6e-c2b3294a82c7
 
 generate secrets:
 ```bash
