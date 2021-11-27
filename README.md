@@ -8,7 +8,7 @@ https://aws.amazon.com/marketplace/seller-profile?id=a28de92c-8c49-49cd-8c6e-c2b
 
 generate secrets:
 ```bash
-export AWS_DOMAIN=magmalocal.com
+export AWS_DOMAIN=magmaindia.org
 mkdir -p certs && cd certs && \
   ../01-generate-secrets.sh $AWS_DOMAIN \
   && cd -

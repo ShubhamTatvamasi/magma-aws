@@ -15,15 +15,16 @@ module "orc8r" {
   # Change this to pull from github with a specified ref
   source = "github.com/magma/magma//orc8r/cloud/deploy/terraform/orc8r-aws?ref=v1.6"
 
-  region = "us-west-2"
+  region = "ap-south-1"
 
+  # If you performing a fresh Orc8r install, choose a recent Postgres version
+  # orc8r_db_engine_version     = "12.6"
   orc8r_db_password           = "password" # must be at least 8 characters
 
   secretsmanager_orc8r_secret = "orc8r-secrets"
-  orc8r_domain_name           = "orc8r.example.com"
-  # orc8r_db_engine_version     = "9.6.21"
+  orc8r_domain_name           = "magmaindia.org"
 
-  orc8r_sns_email             = "admin@example.com"
+  orc8r_sns_email             = "admin@magmaindia.org"
   enable_aws_db_notifications = true  
   
   vpc_name        = "orc8r"
@@ -45,7 +46,7 @@ module "orc8r-app" {
   # Change this to pull from github with a specified ref
   source = "github.com/magma/magma//orc8r/cloud/deploy/terraform/orc8r-helm-aws?ref=v1.6"
 
-  region = "us-west-2"
+  region = "ap-south-1"
 
   orc8r_domain_name     = module.orc8r.orc8r_domain_name
   orc8r_route53_zone_id = module.orc8r.route53_zone_id
@@ -62,12 +63,11 @@ module "orc8r-app" {
   orc8r_db_pass    = module.orc8r.orc8r_db_pass
 
   # Note that this can be any container registry provider
-  docker_registry = "magmacore"
+  docker_registry = "docker.artifactory.magmacore.org"
   docker_user     = ""
   docker_pass     = ""
 
-  # Note that this can be any Helm chart repo provider    
-  # helm_repo = "https://shubhamtatvamasi.github.io/magma-charts-150"
+  # Note that this can be any Helm chart repo provider
   helm_repo = "https://docker.artifactory.magmacore.org/artifactory/helm"
   helm_user = ""
   helm_pass = ""
@@ -81,7 +81,7 @@ module "orc8r-app" {
   elasticsearch_disk_threshold = tonumber(module.orc8r.es_volume_size * 75 / 100)
 
   orc8r_deployment_type = "all"
-  orc8r_tag             = "1.6.0"
+  orc8r_tag             = "1.6.1"
 }
 
 output "nameservers" {
