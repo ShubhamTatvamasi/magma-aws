@@ -40,6 +40,8 @@ module "orc8r" {
   elasticsearch_ebs_enabled     = true
   elasticsearch_ebs_volume_size = 32
   elasticsearch_ebs_volume_type = "gp2"
+
+  deploy_elasticsearch_service_linked_role = false
 }
 
 module "orc8r-app" {
