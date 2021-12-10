@@ -22,6 +22,7 @@ Setup Magma Infrastructure:
 terraform init --upgrade
 terraform apply -target=module.orc8r
 ```
+> `-auto-approve`
 
 set kubernetes config file:
 ```bash
