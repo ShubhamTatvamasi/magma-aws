@@ -2,7 +2,17 @@
 
 ### Prerequisite
 
-#### $ 900.00 monthly cost
+#### $ 1000.00 monthly cost
+
+download terraform:
+```bash
+export TERRAFORM_VERSION=1.0.11
+export OS=dawrin
+wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_${OS}_amd64.zip
+unzip terraform_${TERRAFORM_VERSION}_${OS}_amd64.zip
+sudo mv terraform /usr/local/bin/terraform
+rm terraform_${TERRAFORM_VERSION}_${OS}_amd64.zip
+```
 
 https://aws.amazon.com/marketplace/seller-profile?id=a28de92c-8c49-49cd-8c6e-c2b3294a82c7
 
