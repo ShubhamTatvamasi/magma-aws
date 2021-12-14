@@ -67,6 +67,7 @@ Delete secret:
 aws --region us-east-2 secretsmanager list-secrets
 aws --region us-east-2 secretsmanager delete-secret --secret-id orc8r-secrets
 ```
+> `--force-delete-without-recovery`
 
 ### OLD
 
