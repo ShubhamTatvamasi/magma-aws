@@ -54,6 +54,7 @@ delete everything:
 ```bash
 export KUBECONFIG=$PWD/kubeconfig_orc8r
 terraform destroy
+# OR
 terraform destroy -target=module.orc8r
 ```
 ---
