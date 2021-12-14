@@ -60,6 +60,14 @@ terraform destroy -target=module.orc8r
 ```
 ---
 
+### FAQ
+
+Delete secret:
+```bash
+aws --region us-east-2 secretsmanager list-secrets
+aws --region us-east-2 secretsmanager delete-secret --secret-id orc8r-secrets
+```
+
 ### OLD
 
 #### Use for 1.5.0 Orc8r
