@@ -40,6 +40,7 @@ terraform apply -target=module.orc8r-app.null_resource.orc8r_seed_secrets
 
 # NOTE: if this isn't your first time applying the orc8r_seed_secrets resource, you'll need to first 
 terraform taint module.orc8r-app.null_resource.orc8r_seed_secrets
+terraform destroy -target module.orc8r-app.null_resource.orc8r_seed_secrets
 ```
 
 Install Magma:
