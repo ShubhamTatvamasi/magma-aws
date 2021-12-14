@@ -8,8 +8,8 @@ download terraform:
 ```bash
 wget https://releases.hashicorp.com/terraform/1.0.11/terraform_1.0.11_darwin_amd64.zip
 unzip terraform_1.0.11_darwin_amd64.zip
-sudo mv terraform /usr/local/bin/terraform
 rm terraform_1.0.11_darwin_amd64.zip
+sudo mv terraform /usr/local/bin/terraform
 ```
 
 https://aws.amazon.com/marketplace/seller-profile?id=a28de92c-8c49-49cd-8c6e-c2b3294a82c7
