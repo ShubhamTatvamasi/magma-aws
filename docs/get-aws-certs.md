@@ -84,3 +84,8 @@ kubectl create secret generic orc8r-certs \
   --from-file=rootCA.pem \
   --from-file=rootCA.key
 ```
+
+restart pods so they use new certificates
+```bash
+kubectl delete pods --all -n orc8r
+```
