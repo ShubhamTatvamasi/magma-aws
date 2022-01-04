@@ -62,8 +62,8 @@ terraform apply
 delete everything:
 ```bash
 export KUBECONFIG=$PWD/kubeconfig_orc8r
-terraform destroy -target=module.orc8r-app
-terraform destroy
+terraform destroy -target=module.orc8r-app -auto-approve
+terraform destroy -auto-approve
 ```
 ---
 
