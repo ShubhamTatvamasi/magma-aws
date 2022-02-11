@@ -1,5 +1,10 @@
 # get-aws-certs
 
+
+```bash
+kubectl config set-context --current --namespace=orc8r
+```
+
 ### yaml backup and restore
 
 backup secrets:
