@@ -2,7 +2,7 @@
 
 Change default namespace to Orc8r
 ```bash
-kubectl config set-context --current --namespace=orc8r
+kubectl config set-context --current --namespace orc8r
 ```
 
 ### yaml backup and restore
