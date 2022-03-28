@@ -64,6 +64,7 @@ delete everything:
 export KUBECONFIG=$PWD/kubeconfig_orc8r
 terraform destroy -target=module.orc8r-app -auto-approve
 terraform destroy -auto-approve
+terraform destroy -target=module.orc8r.aws_route53_zone.orc8r -auto-approve
 ```
 ---
 
