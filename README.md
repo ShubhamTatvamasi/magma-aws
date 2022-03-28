@@ -72,10 +72,14 @@ terraform destroy -target=module.orc8r.aws_route53_zone.orc8r -auto-approve
 
 Delete secret:
 ```bash
-aws --region us-east-2 secretsmanager list-secrets
-aws --region us-east-2 secretsmanager delete-secret --secret-id orc8r-secrets
+aws secretsmanager list-secrets \
+  --region us-east-2
+
+aws secretsmanager delete-secret \
+  --secret-id orc8r-secrets \
+  --force-delete-without-recovery \
+  --region us-east-2
 ```
-> `--force-delete-without-recovery`
 
 ### OLD
 
