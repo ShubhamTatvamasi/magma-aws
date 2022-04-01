@@ -2,3 +2,4 @@ certs
 .terraform*
 kubeconfig_orc8r
 terraform.tfstate*
+.DS_Store

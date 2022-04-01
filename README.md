@@ -2,7 +2,7 @@
 
 ### Prerequisite
 
-#### $ 1000.00 monthly cost
+#### $ 1,000.00 monthly cost
 
 download terraform:
 ```bash
@@ -16,7 +16,7 @@ https://aws.amazon.com/marketplace/seller-profile?id=a28de92c-8c49-49cd-8c6e-c2b
 
 generate secrets:
 ```bash
-export AWS_DOMAIN=magmaindia.org
+export AWS_DOMAIN=orc8r.magmacore.link
 mkdir -p certs && cd certs && \
   ../01-generate-secrets.sh $AWS_DOMAIN \
   && cd -
@@ -25,35 +25,44 @@ mkdir -p certs && cd certs && \
 
 ### Install
 
-Setup Magma Infrastructure:
-```bash
-terraform init --upgrade
-terraform apply -target=module.orc8r
-```
-> `-auto-approve`
-
-set kubernetes config file:
-```bash
-export KUBECONFIG=$PWD/kubeconfig_orc8r
-```
-
-install boto3:
+Install boto3 package::
 ```bash
 pip3 install boto3
 ```
 
+Init terraform:
+```bash
+terraform init --upgrade
+```
+
 Setup Magma Secrets:
 ```bash
-terraform apply -target=module.orc8r-app.null_resource.orc8r_seed_secrets
+terraform apply -target=module.orc8r-app.null_resource.orc8r_seed_secrets -auto-approve
 
 # NOTE: if this isn't your first time applying the orc8r_seed_secrets resource, you'll need to first 
 terraform taint module.orc8r-app.null_resource.orc8r_seed_secrets
 terraform destroy -target module.orc8r-app.null_resource.orc8r_seed_secrets
 ```
 
+Setup Magma Infrastructure:
+```bash
+terraform apply -target=module.orc8r -auto-approve
+```
+
 Install Magma:
 ```bash
 terraform apply
+```
+
+set kubernetes config file:
+```bash
+cd ~/.kube
+touch orc8r.magmacore.link
+export KUBECONFIG=${PWD}/orc8r.magmacore.link
+
+aws eks update-kubeconfig \
+  --name orc8r \
+  --region us-east-2
 ```
 ---
 
@@ -61,7 +70,6 @@ terraform apply
 
 delete everything:
 ```bash
-export KUBECONFIG=$PWD/kubeconfig_orc8r
 terraform destroy -target=module.orc8r-app -auto-approve
 terraform destroy -auto-approve
 ```
@@ -72,9 +80,12 @@ terraform destroy -auto-approve
 Delete secret:
 ```bash
 aws --region us-east-2 secretsmanager list-secrets
-aws --region us-east-2 secretsmanager delete-secret --secret-id orc8r-secrets
+
+aws secretsmanager delete-secret \
+  --secret-id orc8r-secrets \
+  --force-delete-without-recovery \
+  --region us-east-2
 ```
-> `--force-delete-without-recovery`
 
 ### OLD
 
@@ -88,6 +99,3 @@ unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 sudo mv terraform /usr/bin/terraform
 rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 ```
-
-
-
