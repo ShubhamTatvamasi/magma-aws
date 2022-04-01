@@ -51,7 +51,7 @@ terraform apply -target=module.orc8r -auto-approve
 
 Install Magma:
 ```bash
-terraform apply
+terraform apply -auto-approve
 ```
 
 set kubernetes config file:
